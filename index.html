@@ -286,19 +286,20 @@
     }
     .doar-cabeca p { font-size: 0.88rem; color: var(--tinta-media); line-height: 1.6; }
 
+    /* GRADE DE BOTÕES DE VALORES EXPANDIDA */
     .doar-grade {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 0.55rem;
-      max-width: 400px;
+      max-width: 440px;
       margin: 0 auto 0.55rem;
       padding-top: 14px;
     }
 
     .doar-opcao {
-      font-size: 1rem;
+      font-size: 0.95rem;
       font-weight: 800;
-      padding: 0.95rem 1rem;
+      padding: 0.88rem 0.6rem;
       border: 2px solid transparent;
       border-radius: 6px;
       color: var(--folha);
@@ -461,7 +462,7 @@
       .cta-ar { font-size: 0.9rem; padding: 0.92rem 0.9rem; max-width: 100%; }
       .bloco-titulo { font-size: 1.05rem; }
       .bloco p { font-size: 0.95rem; }
-      .doar-opcao { font-size: 0.95rem; padding: 0.88rem 0.5rem; }
+      .doar-opcao { font-size: 0.88rem; padding: 0.82rem 0.3rem; }
       .cta-fixo { min-width: 0; width: calc(100% - 1.6rem); max-width: calc(100% - 1.6rem); font-size: 0.82rem; padding: 0.88rem 0.85rem; }
       .faq-ar { margin-bottom: 5.5rem; }
     }
@@ -540,12 +541,16 @@
         <p>Toque em um valor rápido abaixo ou escaneie/copie o Pix diretamente.</p>
       </div>
 
-      <!-- BOTÕES DE VALORES RÁPIDOS (Gatilho de Aumento de Ticket Médio) -->
+      <!-- BOTÕES DE VALORES RÁPIDOS INCLUINDO 200, 300, 500 E 1000 -->
       <div class="doar-grade">
         <button class="doar-opcao" onclick="destacarValor('10')">Doar R$ 10</button>
         <button class="doar-opcao doar-preferida" onclick="destacarValor('20')">Doar R$ 20</button>
         <button class="doar-opcao" onclick="destacarValor('50')">Doar R$ 50</button>
         <button class="doar-opcao" onclick="destacarValor('100')">Doar R$ 100</button>
+        <button class="doar-opcao" onclick="destacarValor('200')">Doar R$ 200</button>
+        <button class="doar-opcao" onclick="destacarValor('300')">Doar R$ 300</button>
+        <button class="doar-opcao" onclick="destacarValor('500')">Doar R$ 500</button>
+        <button class="doar-opcao" onclick="destacarValor('1000')">Doar R$ 1.000</button>
       </div>
 
       <div style="text-align: center; margin: 25px 0;">
@@ -660,7 +665,6 @@
     });
 
     function destacarValor(valor) {
-      // Feedback visual simples ao escolher um botão de valor
       const btn = document.getElementById("btn-copiar-pix");
       btn.style.transform = "scale(1.05)";
       setTimeout(() => { btn.style.transform = "scale(1)"; }, 150);
