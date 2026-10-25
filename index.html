@@ -80,11 +80,11 @@
       display: inline-block;
       background: var(--brasa-veu);
       color: var(--brasa-fundo);
-      font-size: 0.66rem;
+      font-size: 0.68rem;
       font-weight: 800;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      padding: 0.32rem 0.9rem;
+      padding: 0.35rem 0.95rem;
       border-radius: 4px;
       margin-bottom: 0.8rem;
       border: 1px solid #f7c9bd;
@@ -298,6 +298,63 @@
     }
     .doar-cabeca p { font-size: 0.88rem; color: var(--tinta-media); line-height: 1.6; }
 
+    /* Estilos da Grade de Botões de Doação */
+    .grade-valores {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin: 15px 0 20px 0;
+      align-items: end;
+    }
+    .btn-valor {
+      background: #ffffff;
+      border: 2px solid #e3832f;
+      color: #4a2b22;
+      font-size: 1.05rem;
+      font-weight: 800;
+      padding: 12px 5px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: 'Figtree', sans-serif;
+      width: 100%;
+      text-align: center;
+    }
+    .btn-valor:hover, .btn-valor.selecionado {
+      background: #e3832f;
+      color: #ffffff;
+      border-color: #c86c1f;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(227,131,47,0.35);
+    }
+    .btn-valor-caixa-destaque {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      width: 100%;
+    }
+    .tag-destaque {
+      background: #e8432b;
+      color: #ffffff;
+      font-size: 0.58rem;
+      font-weight: 900;
+      padding: 3px 6px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      margin-bottom: 4px;
+      white-space: nowrap;
+      box-shadow: 0 2px 6px rgba(232,67,43,0.3);
+      font-family: 'Figtree', sans-serif;
+    }
+    .btn-destaque {
+      background: linear-gradient(135deg, #e8432b, #c7331d) !important;
+      color: #ffffff !important;
+      border: 2px solid #a62d1a !important;
+      box-shadow: 0 4px 14px rgba(232,67,43,0.4);
+    }
+
     .depoimentos { margin-bottom: 1.8rem; }
     .depoimentos-titulo {
       font-size: 0.8rem;
@@ -457,6 +514,9 @@
       .cta-fixo, .whatsapp-fixo { min-width: 0; width: calc(100% - 1.6rem); max-width: calc(100% - 1.6rem); font-size: 0.82rem; padding: 0.88rem 0.85rem; }
       .whatsapp-fixo { bottom: 4.5rem; }
       .faq-ar { margin-bottom: 6.5rem; }
+      .grade-valores { grid-template-columns: repeat(4, 1fr); gap: 6px; }
+      .btn-valor { font-size: 0.88rem; padding: 10px 2px; }
+      .tag-destaque { font-size: 0.5rem; padding: 2px 4px; }
     }
   </style>
 </head>
@@ -530,7 +590,24 @@
     <section id="ajudar-laura">
       <div class="doar-cabeca">
         <h2>Ajude a manter a Laura respirando</h2>
-        <p>Cada contribuição vai direto para o oxigênio, os medicamentos e os insumos que a Laura precisa todos os dias.</p>
+        <p>Escolha um valor abaixo, escaneie o QR Code ou clique no botão verde para copiar a chave Pix e ajudar a Laura.</p>
+      </div>
+      
+      <!-- Grade de Botões de Valores Rápidos -->
+      <div class="grade-valores">
+        <button class="btn-valor" onclick="selecionarValor('10')">R$ 10</button>
+        <button class="btn-valor" onclick="selecionarValor('20')">R$ 20</button>
+        
+        <div class="btn-valor-caixa-destaque">
+          <span class="tag-destaque">🔥 MAIS ESCOLHIDO</span>
+          <button class="btn-valor btn-destaque" onclick="selecionarValor('50')">R$ 50</button>
+        </div>
+
+        <button class="btn-valor" onclick="selecionarValor('100')">R$ 100</button>
+        <button class="btn-valor" onclick="selecionarValor('200')">R$ 200</button>
+        <button class="btn-valor" onclick="selecionarValor('300')">R$ 300</button>
+        <button class="btn-valor" onclick="selecionarValor('500')">R$ 500</button>
+        <button class="btn-valor" onclick="selecionarValor('1000')">R$ 1.000</button>
       </div>
      
       <div style="text-align: center; margin: 25px 0;">
@@ -542,6 +619,12 @@
       </div>
 
       <script>
+      function selecionarValor(valor) {
+          document.querySelectorAll('.btn-valor').forEach(btn => btn.classList.remove('selecionado'));
+          event.target.classList.add('selecionado');
+          copiarPix();
+      }
+
       function copiarPix() {
           const chavePix = "apoiealaurinha@gmail.com"; 
           
