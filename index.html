@@ -20,9 +20,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Laura está lutando para respirar — ajude a manter o oxigênio ligado | Abrace uma Vida</title>
   <meta name="description" content="Laura contraiu uma infecção grave e está com os pulmões comprometidos. Ela depende de oxigênio em casa e de medicação diária para continuar viva. Abrace uma Vida.">
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-  <link href="_ext/fonts.googleapis.com/assets/css2" rel="stylesheet">
+  <link href="_ext/fonts.googleapis.com/assets/css2" rel="stylesheet" media="print" onload="this.media='all'">
 
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -56,7 +57,7 @@
       text-size-adjust: 100%;
       -webkit-text-size-adjust: 100%;
     }
-    img { max-width: 100%; }
+    img { max-width: 100%; height: auto; }
     a { color: inherit; text-decoration: none; }
 
     .cabecalho-selo {
@@ -523,7 +524,7 @@
 <body data-campanha="juntos-pela-vida-laura-oxigenio-2026">
 
   <header class="cabecalho-selo">
-   <img src="logo.jpg" alt="Abrace uma Vida" class="selo-figura">
+   <img src="logo.jpg" alt="Abrace uma Vida" class="selo-figura" width="150" height="94" loading="eager">
   </header>
 
   <main class="coluna">
@@ -535,7 +536,7 @@
     </div>
 
     <figure class="capa">
-     <img src="capa-laura-respirar.jpg" alt="Laura internada, com cânula de oxigênio no rosto, lutando para respirar" class="capa-img">
+     <img src="capa-laura-respirar.jpg" alt="Laura internada, com cânula de oxigênio no rosto, lutando para respirar" class="capa-img" fetchpriority="high" width="600" height="800">
       <figcaption class="capa-nota">Laura hoje: pulmões comprometidos, oxigênio contínuo e medicação diária para seguir respirando.</figcaption>
     </figure>
 
@@ -611,7 +612,7 @@
       </div>
      
       <div style="text-align: center; margin: 25px 0;">
-          <img src="flow.jpg" alt="QR Code Pix" style="max-width: 450px; width: 100%; height: auto; border-radius: 12px; display: block; margin: 0 auto 15px auto; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+          <img src="flow.jpg" alt="QR Code Pix" width="400" height="400" loading="lazy" style="max-width: 450px; width: 100%; height: auto; border-radius: 12px; display: block; margin: 0 auto 15px auto; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
 
           <button onclick="copiarPix()" id="btn-copiar-pix" style="background-color: #25d366; color: white; border: none; padding: 15px 30px; font-size: 19px; font-weight: bold; border-radius: 8px; cursor: pointer; transition: 0.2s; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
               📋 Copiar Chave Pix (E-mail)
@@ -650,7 +651,7 @@
 
       <div class="depoimento">
         <div class="depoimento-topo">
-          <img src="comentario-taina.jpg" alt="" class="depoimento-foto" style="object-position: 48% 22%;">
+          <img src="comentario-taina.jpg" alt="" class="depoimento-foto" width="46" height="46" loading="lazy" style="object-position: 48% 22%;">
           <div>
             <div class="depoimento-nome">Tainá Vilela</div>
             <div class="depoimento-tempo">há 22 minutos</div>
@@ -662,7 +663,7 @@
 
       <div class="depoimento">
         <div class="depoimento-topo">
-          <img src="comentario-henrique.jpg" alt="" class="depoimento-foto" style="object-position: 50% 18%;">
+          <img src="comentario-henrique.jpg" alt="" class="depoimento-foto" width="46" height="46" loading="lazy" style="object-position: 50% 18%;">
           <div>
             <div class="depoimento-nome">Henrique Farias</div>
             <div class="depoimento-tempo">há 1 hora</div>
@@ -674,7 +675,7 @@
 
       <div class="depoimento">
         <div class="depoimento-topo">
-          <img src="comentario-luciana.jpg" alt="" class="depoimento-foto" style="object-position: 50% 10%;">
+          <img src="comentario-luciana.jpg" alt="" class="depoimento-foto" width="46" height="46" loading="lazy" style="object-position: 50% 10%;">
           <div>
             <div class="depoimento-nome">Luciana Siqueira</div>
             <div class="depoimento-tempo">há 3 horas</div>
