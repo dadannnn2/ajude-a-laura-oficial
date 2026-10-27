@@ -626,9 +626,15 @@
       <div style="text-align: center; margin: 25px 0;">
           <img src="flow.jpg" alt="QR Code Pix" width="400" height="400" loading="lazy" style="max-width: 450px; width: 100%; height: auto; border-radius: 12px; display: block; margin: 0 auto 15px auto; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
 
-          <button onclick="copiarPix()" id="btn-copiar-pix" style="background-color: #25d366; color: white; border: none; padding: 15px 30px; font-size: 19px; font-weight: bold; border-radius: 8px; cursor: pointer; transition: 0.2s; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
+          <button onclick="copiarPix()" id="btn-copiar-pix" style="background-color: #25d366; color: white; border: none; padding: 15px 30px; font-size: 19px; font-weight: bold; border-radius: 8px; cursor: pointer; transition: 0.2s; box-shadow: 0 4px 10px rgba(0,0,0,0.2); width: 100%; max-width: 320px;">
               📋 Copiar Chave Pix (E-mail)
           </button>
+
+          <!-- Caixa de texto de segurança para celulares antigos -->
+          <div style="margin-top: 15px;">
+              <p style="font-size: 13px; color: #7c5c4f; margin-bottom: 5px;">Se o botão não funcionar, copie a chave abaixo:</p>
+              <input type="text" id="texto-pix" value="apoiealaurinha@gmail.com" readonly onclick="this.select();" style="width: 100%; max-width: 320px; padding: 10px; text-align: center; font-size: 14px; border: 1px solid #ecd8c5; border-radius: 6px; background: #fff; color: #3b231c;">
+          </div>
       </div>
 
       <script>
@@ -640,17 +646,39 @@
 
       function copiarPix() {
           const chavePix = "apoiealaurinha@gmail.com"; 
+          const btn = document.getElementById("btn-copiar-pix");
+          const inputPix = document.getElementById("texto-pix");
+
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+              navigator.clipboard.writeText(chavePix).then(() => {
+                  sucessoCopia(btn);
+              }).catch(() => {
+                  copiaAlternativa(inputPix, btn);
+              });
+          } else {
+              copiaAlternativa(inputPix, btn);
+          }
+      }
+
+      function copiaAlternativa(input, btn) {
+          input.focus();
+          input.select();
+          try {
+              document.execCommand('copy');
+              sucessoCopia(btn);
+          } catch (err) {
+              btn.innerHTML = "⚠️ Selecione a chave acima e copie";
+          }
+      }
+
+      function sucessoCopia(btn) {
+          btn.innerHTML = "✅ Chave Pix Copiada com Sucesso!";
+          btn.style.backgroundColor = "#128c7e";
           
-          navigator.clipboard.writeText(chavePix).then(() => {
-              const btn = document.getElementById("btn-copiar-pix");
-              btn.innerHTML = "✅ Chave Pix Copiada com Sucesso!";
-              btn.style.backgroundColor = "#128c7e";
-              
-              setTimeout(() => {
-                  btn.innerHTML = "📋 Copiar Chave Pix (E-mail)";
-                  btn.style.backgroundColor = "#25d366";
-              }, 3000);
-          });
+          setTimeout(() => {
+              btn.innerHTML = "📋 Copiar Chave Pix (E-mail)";
+              btn.style.backgroundColor = "#25d366";
+          }, 3000);
       }
       </script>
       <p class="selo-pix" id="atalho-doar" style="margin-top:0.75rem">🔒 PIX 100% Seguro · Leva menos de 1 minuto</p>
