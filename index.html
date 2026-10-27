@@ -293,4 +293,470 @@
     /* Estilos da Grade de Botões de Doação */
     .grade-valores {
       display: grid;
-      grid-template-
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin: 15px 0 20px 0;
+      align-items: end;
+    }
+    .btn-valor {
+      background: #ffffff;
+      border: 2px solid #e3832f;
+      color: #4a2b22;
+      font-size: 1.05rem;
+      font-weight: 800;
+      padding: 12px 5px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: 'Figtree', sans-serif;
+      width: 100%;
+      text-align: center;
+    }
+    .btn-valor:hover, .btn-valor.selecionado {
+      background: #e3832f;
+      color: #ffffff;
+      border-color: #c86c1f;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(227,131,47,0.35);
+    }
+    .btn-valor-caixa-destaque {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      width: 100%;
+    }
+    .tag-destaque {
+      background: #e8432b;
+      color: #ffffff;
+      font-size: 0.58rem;
+      font-weight: 900;
+      padding: 3px 6px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      margin-bottom: 4px;
+      white-space: nowrap;
+      box-shadow: 0 2px 6px rgba(232,67,43,0.3);
+      font-family: 'Figtree', sans-serif;
+    }
+    .btn-destaque {
+      background: linear-gradient(135deg, #e8432b, #c7331d) !important;
+      color: #ffffff !important;
+      border: 2px solid #a62d1a !important;
+      box-shadow: 0 4px 14px rgba(232,67,43,0.4);
+    }
+
+    .depoimentos { margin-bottom: 1.8rem; }
+    .depoimentos-titulo {
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: var(--tinta-media);
+      margin-bottom: 1rem;
+      font-family: 'Figtree', sans-serif;
+    }
+    .depoimento { border-bottom: 1px solid var(--linha); padding: 1rem 0; }
+    .depoimento:last-child { border-bottom: none; }
+    .depoimento-topo { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.5rem; }
+    .depoimento-foto {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      object-fit: cover;
+      border: 2px solid var(--terra);
+      filter: contrast(1.1) saturate(0.86) brightness(1.05);
+    }
+    .depoimento-nome { font-size: 0.86rem; font-weight: 800; color: var(--tinta); line-height: 1.2; }
+    .depoimento-tempo { font-size: 0.72rem; color: var(--tinta-media); font-weight: 600; }
+    .depoimento p { font-size: 0.9rem; color: var(--tinta); line-height: 1.68; margin-bottom: 0.5rem; }
+    .depoimento-curtida {
+      display: flex;
+      align-items: center;
+      gap: 0.26rem;
+      font-size: 0.77rem;
+      color: var(--tinta-media);
+    }
+
+    .fecho-apelo {
+      background: var(--cacau);
+      color: rgba(255,255,255,0.92);
+      border-radius: 8px;
+      padding: 1.15rem 1.2rem;
+      text-align: center;
+      margin-bottom: 1.8rem;
+    }
+    .fecho-apelo p { font-size: 0.88rem; line-height: 1.65; margin-bottom: 0.55rem; }
+    .fecho-apelo strong { color: var(--terra-clara); }
+
+    .faq-ar { margin-bottom: 5rem; }
+    .faq-ar h3 {
+      font-size: 0.74rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--tinta-media);
+      margin-bottom: 1rem;
+      font-family: 'Figtree', sans-serif;
+    }
+    .faq-linha { border-bottom: 1px solid var(--linha); }
+    .faq-pergunta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.88rem 0;
+      cursor: pointer;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      font-weight: 800;
+      user-select: none;
+    }
+    .faq-sinal { color: var(--brasa); font-size: 1.2rem; transition: transform 0.25s; flex-shrink: 0; }
+    .faq-pergunta.expandida .faq-sinal { transform: rotate(45deg); }
+    .faq-resposta {
+      max-height: 0;
+      overflow: hidden;
+      font-size: 0.86rem;
+      color: var(--tinta-media);
+      line-height: 1.75;
+      transition: max-height 0.3s ease, padding 0.3s;
+    }
+    .faq-resposta.expandida { max-height: 380px; padding-bottom: 1rem; }
+
+    .rodape-jpv {
+      background: linear-gradient(135deg, var(--cacau-noite), var(--terra-fundo));
+      color: rgba(255,255,255,0.9);
+      padding: 1.65rem 1rem;
+      text-align: center;
+      font-size: 0.75rem;
+      line-height: 1.95;
+      border-top: 4px solid var(--terra-clara);
+    }
+    .rodape-jpv strong { color: var(--terra-clara); }
+
+    .cta-fixo {
+      position: fixed;
+      bottom: 1rem;
+      left: 0;
+      right: 0;
+      width: fit-content;
+      min-width: 250px;
+      max-width: 420px;
+      margin: 0 auto;
+      display: block;
+      background: linear-gradient(135deg, var(--brasa), var(--brasa-fundo));
+      color: var(--folha);
+      font-size: 0.86rem;
+      font-weight: 800;
+      text-align: center;
+      padding: 0.9rem 1.35rem;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      z-index: 99;
+      box-shadow: 0 8px 24px rgba(199,51,29,0.48);
+      font-family: 'Figtree', sans-serif;
+      transition: filter 0.2s;
+    }
+    .cta-fixo:hover { filter: brightness(1.05); }
+
+    /* Botão Flutuante do WhatsApp */
+    .whatsapp-fixo {
+      position: fixed;
+      bottom: 4.8rem;
+      left: 0;
+      right: 0;
+      width: fit-content;
+      min-width: 250px;
+      max-width: 420px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: #25d366;
+      color: #ffffff;
+      font-size: 0.86rem;
+      font-weight: 800;
+      text-align: center;
+      padding: 0.85rem 1.35rem;
+      border-radius: 6px;
+      z-index: 98;
+      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+      font-family: 'Figtree', sans-serif;
+      transition: filter 0.2s;
+    }
+    .whatsapp-fixo:hover { filter: brightness(1.05); }
+
+    @media (max-width: 600px) {
+      .selo-figura { height: 78px; }
+      .capa-img {
+        aspect-ratio: 3 / 4;
+        max-height: min(84vh, 620px);
+        object-position: center 16%;
+        border-radius: 6px 6px 0 0;
+      }
+      .chamada { padding: 1.2rem 0 0.85rem; }
+      .coluna { padding: 0 0.9rem; }
+      .painel-meta { padding: 1.1rem 0.95rem 0.95rem; }
+      .painel-cifra, .painel-pct { font-size: 1.68rem; }
+      .bloco-titulo { font-size: 1.05rem; }
+      .bloco p { font-size: 0.95rem; }
+      .cta-fixo, .whatsapp-fixo { min-width: 0; width: calc(100% - 1.6rem); max-width: calc(100% - 1.6rem); font-size: 0.82rem; padding: 0.88rem 0.85rem; }
+      .whatsapp-fixo { bottom: 4.5rem; }
+      .faq-ar { margin-bottom: 6.5rem; }
+      .grade-valores { grid-template-columns: repeat(4, 1fr); gap: 6px; }
+      .btn-valor { font-size: 0.88rem; padding: 10px 2px; }
+      .tag-destaque { font-size: 0.5rem; padding: 2px 4px; }
+    }
+  </style>
+</head>
+<body data-campanha="juntos-pela-vida-laura-oxigenio-2026">
+
+  <header class="cabecalho-selo">
+   <img src="logo.jpg" alt="Abrace uma Vida" class="selo-figura" width="150" height="94" loading="eager">
+  </header>
+
+  <main class="coluna">
+
+    <div class="chamada">
+      <span class="chamada-tag">A luta da pequena Laura</span>
+      <h1>"Minha filha está lutando para respirar. A gente já não tem mais como bancar o tratamento sozinho."</h1>
+      <p>A pequena Laura contraiu uma infecção grave e hoje está com os pulmões comprometidos. <strong>Ela precisa de oxigênio em casa para continuar vivendo.</strong></p>
+    </div>
+
+    <figure class="capa">
+     <img src="capa-laura-respirar.jpg" alt="Laura internada, com cânula de oxigênio no rosto, lutando para respirar" class="capa-img" fetchpriority="high" width="600" height="800">
+      <figcaption class="capa-nota">Laura hoje: pulmões comprometidos, oxigênio contínuo e medicação diária para seguir respirando.</figcaption>
+    </figure>
+
+    <div class="painel-meta">
+      <div class="painel-topo">
+        <div>
+          <div class="painel-cifra">R$ 16.605</div>
+          <div class="painel-sub">arrecadados de R$ 44.200</div>
+        </div>
+        <div class="painel-pct">37%<small>da meta</small></div>
+      </div>
+      <div class="painel-trilho"><div class="painel-onda" style="width:37%"></div></div>
+      <div class="painel-rodape">
+        <span><strong>412 pessoas</strong> já ajudaram</span>
+        <span><strong>oxigênio</strong> não pode parar</span>
+      </div>
+    </div>
+
+    <!-- Bloco de Doação Pix no Início -->
+    <section id="ajudar-laura">
+      <div class="doar-cabeca">
+        <h2>Ajude a manter a Laura respirando</h2>
+        <p>Escolha um valor abaixo, escaneie o QR Code ou clique no botão verde para copiar a chave Pix e ajudar a Laura.</p>
+      </div>
+      
+      <!-- Grade de Botões de Valores Rápidos -->
+      <div class="grade-valores">
+        <button class="btn-valor" onclick="selecionarValor('10')">R$ 10</button>
+        <button class="btn-valor" onclick="selecionarValor('20')">R$ 20</button>
+        
+        <div class="btn-valor-caixa-destaque">
+          <span class="tag-destaque">🔥 MAIS ESCOLHIDO</span>
+          <button class="btn-valor btn-destaque" onclick="selecionarValor('50')">R$ 50</button>
+        </div>
+
+        <button class="btn-valor" onclick="selecionarValor('100')">R$ 100</button>
+        <button class="btn-valor" onclick="selecionarValor('200')">R$ 200</button>
+        <button class="btn-valor" onclick="selecionarValor('300')">R$ 300</button>
+        <button class="btn-valor" onclick="selecionarValor('500')">R$ 500</button>
+        <button class="btn-valor" onclick="selecionarValor('1000')">R$ 1.000</button>
+      </div>
+     
+      <div style="text-align: center; margin: 25px 0;">
+          <img src="flow.jpg" alt="QR Code Pix" width="400" height="400" loading="lazy" style="max-width: 450px; width: 100%; height: auto; border-radius: 12px; display: block; margin: 0 auto 15px auto; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+
+          <button onclick="copiarPix()" id="btn-copiar-pix" style="background-color: #25d366; color: white; border: none; padding: 15px 30px; font-size: 19px; font-weight: bold; border-radius: 8px; cursor: pointer; transition: 0.2s; box-shadow: 0 4px 10px rgba(0,0,0,0.2); width: 100%; max-width: 320px;">
+              📋 Copiar Chave Pix (E-mail)
+          </button>
+
+          <!-- Caixa de texto de segurança para celulares antigos -->
+          <div style="margin-top: 15px;">
+              <p style="font-size: 13px; color: #7c5c4f; margin-bottom: 5px;">Se o botão não funcionar, copie a chave abaixo:</p>
+              <input type="text" id="texto-pix" value="apoiealaurinha@gmail.com" readonly onclick="this.select();" style="width: 100%; max-width: 320px; padding: 10px; text-align: center; font-size: 14px; border: 1px solid #ecd8c5; border-radius: 6px; background: #fff; color: #3b231c;">
+          </div>
+      </div>
+
+      <script>
+      function selecionarValor(valor) {
+          document.querySelectorAll('.btn-valor').forEach(btn => btn.classList.remove('selecionado'));
+          event.target.classList.add('selecionado');
+          copiarPix();
+      }
+
+      function copiarPix() {
+          const chavePix = "apoiealaurinha@gmail.com"; 
+          const btn = document.getElementById("btn-copiar-pix");
+          const inputPix = document.getElementById("texto-pix");
+
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+              navigator.clipboard.writeText(chavePix).then(() => {
+                  sucessoCopia(btn);
+              }).catch(() => {
+                  copiaAlternativa(inputPix, btn);
+              });
+          } else {
+              copiaAlternativa(inputPix, btn);
+          }
+      }
+
+      function copiaAlternativa(input, btn) {
+          input.focus();
+          input.select();
+          try {
+              document.execCommand('copy');
+              sucessoCopia(btn);
+          } catch (err) {
+              btn.innerHTML = "⚠️ Selecione a chave acima e copie";
+          }
+      }
+
+      function sucessoCopia(btn) {
+          btn.innerHTML = "✅ Chave Pix Copiada com Sucesso!";
+          btn.style.backgroundColor = "#128c7e";
+          
+          setTimeout(() => {
+              btn.innerHTML = "📋 Copiar Chave Pix (E-mail)";
+              btn.style.backgroundColor = "#25d366";
+          }, 3000);
+      }
+      </script>
+      <p class="selo-pix" id="atalho-doar" style="margin-top:0.75rem">🔒 PIX 100% Seguro · Leva menos de 1 minuto</p>
+    </section>
+
+    <hr class="divisa">
+
+    <section class="bloco">
+      <h2 class="bloco-titulo">🫁 Pulmões comprometidos. Oxigênio em casa. Cada dia é uma luta.</h2>
+      <p>A Laura contraiu uma infecção grave que comprometeu seus pulmões. Desde então, ela <strong>depende de oxigênio contínuo para respirar</strong> — em casa, com a família ao redor, tentando manter tudo funcionando.</p>
+      <p>Além do oxigênio, ela precisa de <strong>medicação diária sem interrupção</strong>. Sem esses recursos, ela não consegue respirar. Não é metáfora: é literalmente a diferença entre viver e não viver.</p>
+      <div class="alerta-forte">⚠️ Cada real arrecadado vai direto para pagar o oxigênio, os medicamentos e os insumos que mantêm a Laura viva.</div>
+    </section>
+
+    <section class="bloco">
+      <h2 class="bloco-titulo">👨‍👩‍👧 Uma família que já não consegue mais sozinha.</h2>
+      <p>Os pais da Laura chegaram num ponto em que os recursos acabaram. O custo do tratamento é <strong>contínuo e crescente</strong> — e eles não têm mais condições de arcar com tudo sozinhos.</p>
+      <p>Qualquer valor ajuda a manter o oxigênio ligado e os remédios em dia. <strong>Não existe contribuição pequena quando uma vida está em jogo.</strong></p>
+    </section>
+
+    <div class="fala-familia">
+      <span class="fala-abre">💚 Apelo da família</span><br>
+      "A Laura é a nossa vida. Não conseguimos mais bancar tudo sozinhos. Qualquer valor ajuda a manter o oxigênio ligado e os remédios em dia. Que Deus abençoe cada pessoa que ajudar a nossa menina. 🙏"
+      <cite>— Família da Laura</cite>
+    </div>
+
+    <section class="bloco">
+      <h2 class="bloco-titulo">Não deixe essa história ser apenas mais uma que você viu e esqueceu</h2>
+      <p>Por trás desta página existe um bebê que luta por cada respiração e uma família que já fez tudo o que podia para não deixar o oxigênio faltar.</p>
+      <p><strong>Talvez ninguém consiga sustentar esse tratamento sozinho. Mas muitas pessoas juntas conseguem manter a Laura respirando.</strong></p>
+      <div class="frase-forte">Faça parte da luta da Laura. Ajude a manter o oxigênio ligado e os remédios em dia.</div>
+    </section>
+
+    <hr class="divisa">
+
+    <section class="depoimentos">
+      <p class="depoimentos-titulo">Quem já ajudou a Laura (3)</p>
+
+      <div class="depoimento">
+        <div class="depoimento-topo">
+          <img src="comentario-taina.jpg" alt="" class="depoimento-foto" width="46" height="46" loading="lazy" style="object-position: 48% 22%;">
+          <div>
+            <div class="depoimento-nome">Tainá Vilela</div>
+            <div class="depoimento-tempo">há 22 minutos</div>
+          </div>
+        </div>
+        <p>Vi a foto dela com a cânula de oxigênio e travei. Um bebê tão pequeno lutando pra puxar o ar… Doei o que deu hoje e volto no fim do mês. Que esse oxigênio não falte nem um dia. 🧡</p>
+        <div class="depoimento-curtida"><span>❤️</span> 207</div>
+      </div>
+
+      <div class="depoimento">
+        <div class="depoimento-topo">
+          <img src="comentario-henrique.jpg" alt="" class="depoimento-foto" width="46" height="46" loading="lazy" style="object-position: 50% 18%;">
+          <div>
+            <div class="depoimento-nome">Henrique Farias</div>
+            <div class="depoimento-tempo">há 1 hora</div>
+          </div>
+        </div>
+        <p>Ninguém precisa doar centenas de reais. Se cada um fizer um pouco, o oxigênio e os remédios da Laura ficam garantidos. Compartilhei no grupo da família e no do trabalho. Força pros pais. 🙏</p>
+        <div class="depoimento-curtida"><span>❤️</span> 154</div>
+      </div>
+
+      <div class="depoimento">
+        <div class="depoimento-topo">
+          <img src="comentario-luciana.jpg" alt="" class="depoimento-foto" width="46" height="46" loading="lazy" style="object-position: 50% 10%;">
+          <div>
+            <div class="depoimento-nome">Luciana Siqueira</div>
+            <div class="depoimento-tempo">há 3 horas</div>
+          </div>
+        </div>
+        <p>Já fui mãe de UTI neonatal e sei o que é ouvir o aparelho apitar de madrugada. Ler que a família não consegue mais pagar o oxigênio apertou meu coração. Fiz minha parte e pedi pras amigas também. ✨</p>
+        <div class="depoimento-curtida"><span>❤️</span> 231</div>
+      </div>
+    </section>
+
+    <div class="fecho-apelo">
+      <p><strong>Talvez ninguém consiga sustentar esse tratamento sozinho.</strong> Muitas pessoas juntas conseguem manter o oxigênio ligado e os remédios da Laura em dia.</p>
+      <p>Doe o valor que puder. Compartilhe se não puder doar. E não deixe essa família enfrentar isso sozinha.</p>
+      <p style="margin-bottom:0;font-size:0.8rem;opacity:0.7">Comentários encerrados para esta publicação</p>
+    </div>
+
+    <hr class="divisa">
+
+    <section class="faq-ar">
+      <h3>Perguntas frequentes</h3>
+      <div class="faq-linha">
+        <div class="faq-pergunta">Como funciona a contribuição? <span class="faq-sinal">+</span></div>
+        <div class="faq-resposta">Escolha um valor, clique no botão para copiar a chave Pix (e-mail) ou escaneie o QR Code no seu banco. É rápido, seguro e leva menos de 1 minuto.</div>
+      </div>
+      <div class="faq-linha">
+        <div class="faq-pergunta">O que aconteceu com a Laura? <span class="faq-sinal">+</span></div>
+        <div class="faq-resposta">Laura contraiu uma infecção grave que comprometeu seus pulmões. Desde então ela depende de oxigênio contínuo em casa e de medicação diária para conseguir respirar.</div>
+      </div>
+      <div class="faq-linha">
+        <div class="faq-pergunta">Minha contribuição é segura? <span class="faq-sinal">+</span></div>
+        <div class="faq-resposta">Sim, totalmente segura e direta para a chave oficial da família responsável pelo tratamento da Laura.</div>
+      </div>
+      <div class="faq-linha">
+        <div class="faq-pergunta">Não posso contribuir — como ajudo de outra forma? <span class="faq-sinal">+</span></div>
+        <div class="faq-resposta">Compartilhe o link deste site com amigos, familiares e em grupos de WhatsApp. Isso ajuda muito a alcançar mais doadores.</div>
+      </div>
+      <div class="faq-linha">
+        <div class="faq-pergunta">O dinheiro realmente chega para a família? <span class="faq-sinal">+</span></div>
+        <div class="faq-resposta">Sim. Todos os recursos arrecadados são integralmente destinados ao oxigênio, aos medicamentos e aos insumos usados no tratamento da Laura em casa.</div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="rodape-jpv">
+    <strong>Abrace uma Vida</strong> · Unidos por quem precisa de uma chance.<br>
+    Campanha de arrecadação para o tratamento da Laura<br>
+    © 2026 — Todos os direitos reservados
+  </footer>
+
+  <!-- Botões Fixos Inferiores -->
+  <a href="https://wa.me/5519987378488?text=Olá,%20vi%20a%20campanha%20da%20Laura%20e%20gostaria%20de%20falar%20com%20a%20família." target="_blank" class="whatsapp-fixo">💬 Falar com a Mãe da Laura (WhatsApp)</a>
+  <a href="#ajudar-laura" class="cta-fixo">Quero ajudar a Laura a respirar</a>
+
+  <script>
+    document.querySelectorAll('.faq-pergunta').forEach(function (item) {
+      item.addEventListener('click', function () {
+        this.classList.toggle('expandida');
+        this.nextElementSibling.classList.toggle('expandida');
+      });
+    });
+
+    document.getElementById('atalho-doar').addEventListener('click', function (ev) {
+      ev.preventDefault();
+      document.getElementById('ajudar-laura').scrollIntoView({ behavior: 'smooth' });
+    });
+  </script>
+  <script src="assets/app.js"></script>
+</body>
+</html>
