@@ -23,7 +23,7 @@
     fbq('init', '2329575777877928');
     fbq('track', 'PageView');
   </script>
-  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2329575777877928&ev=PageView&noscript=1"/></noscript>
+  <noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=2329575777877928&ev=PageView&noscript=1"/></noscript>
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -54,7 +54,7 @@
       --papel:      #fffaf5;
       --folha:      #ffffff;
       --tinta:      #3b231c;
-      --tinta-media:  #7c5c4f;
+      --tinta-media:  #6b4d42;
       --linha:      #ecd8c5;
     }
 
@@ -70,7 +70,23 @@
       -webkit-text-size-adjust: 100%;
     }
     img { max-width: 100%; height: auto; }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
     a { color: inherit; text-decoration: none; }
+    a:focus-visible, button:focus-visible, input:focus-visible {
+      outline: 3px solid var(--terra);
+      outline-offset: 3px;
+    }
 
     .cabecalho-selo {
       background: var(--folha);
@@ -404,11 +420,17 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      width: 100%;
       padding: 0.88rem 0;
       cursor: pointer;
       gap: 0.5rem;
       font-size: 0.9rem;
       font-weight: 800;
+      font-family: inherit;
+      color: var(--tinta);
+      background: transparent;
+      border: 0;
+      text-align: left;
       user-select: none;
     }
     .faq-sinal { color: var(--brasa); font-size: 1.2rem; transition: transform 0.25s; flex-shrink: 0; }
@@ -459,6 +481,10 @@
       transition: filter 0.2s;
     }
     .cta-fixo:hover { filter: brightness(1.05); }
+    .cta-fixo:focus-visible, .whatsapp-fixo:focus-visible {
+      outline: 3px solid var(--terra-clara);
+      outline-offset: 3px;
+    }
 
     /* Botão Flutuante do WhatsApp */
     .whatsapp-fixo {
@@ -570,7 +596,7 @@
       </div>
      
       <div style="text-align: center; margin: 25px 0;">
-          <img src="flow.jpg" alt="QR Code Pix" width="400" height="400" loading="lazy" style="max-width: 450px; width: 100%; height: auto; border-radius: 12px; display: block; margin: 0 auto 15px auto; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+          <img src="flow.jpg" alt="Código QR para doação via Pix" width="400" height="400" loading="lazy" style="max-width: 450px; width: 100%; height: auto; border-radius: 12px; display: block; margin: 0 auto 15px auto; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
 
           <button onclick="copiarPix()" id="btn-copiar-pix" style="background-color: #25d366; color: white; border: none; padding: 15px 30px; font-size: 19px; font-weight: bold; border-radius: 8px; cursor: pointer; transition: 0.2s; box-shadow: 0 4px 10px rgba(0,0,0,0.2); width: 100%; max-width: 320px;">
               📋 Copiar Chave Pix (E-mail)
@@ -579,14 +605,17 @@
           <!-- Caixa de texto de segurança para celulares antigos -->
           <div style="margin-top: 15px;">
               <p style="font-size: 13px; color: #7c5c4f; margin-bottom: 5px;">Se o botão não funcionar, copie a chave abaixo:</p>
-              <input type="text" id="texto-pix" value="apoiealaurinha@gmail.com" readonly onclick="this.select();" style="width: 100%; max-width: 320px; padding: 10px; text-align: center; font-size: 14px; border: 1px solid #ecd800; border-radius: 6px; background: #fff; color: #3b231c;">
+              <label for="texto-pix" class="sr-only">Chave Pix para copiar manualmente</label>
+           <input type="text" id="texto-pix" value="apoiealaurinha@gmail.com" readonly onclick="this.select();" style="width: 100%; max-width: 320px; padding: 10px; text-align: center; font-size: 14px; border: 1px solid #ecd800; border-radius: 6px; background: #fff; color: #3b231c;">
           </div>
       </div>
 
       <script>
       function selecionarValor(valor) {
           document.querySelectorAll('.btn-valor').forEach(btn => btn.classList.remove('selecionado'));
-          event.target.classList.add('selecionado');
+          const botoes = document.querySelectorAll('.btn-valor');
+          const botaoSelecionado = Array.from(botoes).find(btn => btn.textContent.includes('R$ ' + Number(valor).toLocaleString('pt-BR')));
+          if (botaoSelecionado) botaoSelecionado.classList.add('selecionado');
           copiarPix();
       }
 
@@ -665,7 +694,7 @@
 
       <div class="depoimento">
         <div class="depoimento-topo">
-          <img src="comentario-taina.jpg" alt="" class="depoimento-foto" width="46" height="46" loading="lazy" style="object-position: 48% 22%;">
+          <img src="comentario-taina.jpg" alt="Foto de Tainá Vilela" class="depoimento-foto" width="46" height="46" loading="lazy" style="object-position: 48% 22%;">
           <div>
             <div class="depoimento-nome">Tainá Vilela</div>
             <div class="depoimento-tempo">há 22 minutos</div>
@@ -677,7 +706,7 @@
 
       <div class="depoimento">
         <div class="depoimento-topo">
-          <img src="comentario-henrique.jpg" alt="" class="depoimento-foto" width="46" height="46" loading="lazy" style="object-position: 50% 18%;">
+          <img src="comentario-henrique.jpg" alt="Foto de Henrique Farias" class="depoimento-foto" width="46" height="46" loading="lazy" style="object-position: 50% 18%;">
           <div>
             <div class="depoimento-nome">Henrique Farias</div>
             <div class="depoimento-tempo">há 1 hora</div>
@@ -689,7 +718,7 @@
 
       <div class="depoimento">
         <div class="depoimento-topo">
-          <img src="comentario-luciana.jpg" alt="" class="depoimento-foto" width="46" height="46" loading="lazy" style="object-position: 50% 10%;">
+          <img src="comentario-luciana.jpg" alt="Foto de Luciana Siqueira" class="depoimento-foto" width="46" height="46" loading="lazy" style="object-position: 50% 10%;">
           <div>
             <div class="depoimento-nome">Luciana Siqueira</div>
             <div class="depoimento-tempo">há 3 horas</div>
@@ -711,24 +740,34 @@
     <section class="faq-ar">
       <h3>Perguntas frequentes</h3>
       <div class="faq-linha">
-        <div class="faq-pergunta">Como funciona a contribuição? <span class="faq-sinal">+</span></div>
-        <div class="faq-resposta">Escolha um valor, clique no botão para copiar a chave Pix (e-mail) ou escaneie o QR Code no seu banco. É rápido, seguro e leva menos de 1 minuto.</div>
+        <button type="button" class="faq-pergunta" aria-expanded="false" aria-controls="faq-resposta-1">
+          <span>Como funciona a contribuição?</span><span class="faq-sinal" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-resposta" id="faq-resposta-1" hidden>Escolha um valor, clique no botão para copiar a chave Pix (e-mail) ou escaneie o QR Code no seu banco. É rápido, seguro e leva menos de 1 minuto.</div>
       </div>
       <div class="faq-linha">
-        <div class="faq-pergunta">O que aconteceu com a Laura? <span class="faq-sinal">+</span></div>
-        <div class="faq-resposta">A Laura contraiu uma pneumonia gravíssima e está internada na UTI há 16 dias com os pulmões comprometidos, dependendo inteiramente de oxigênio e medicação contínua.</div>
+        <button type="button" class="faq-pergunta" aria-expanded="false" aria-controls="faq-resposta-2">
+          <span>O que aconteceu com a Laura?</span><span class="faq-sinal" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-resposta" id="faq-resposta-2" hidden>A Laura contraiu uma pneumonia gravíssima e está internada na UTI há 16 dias com os pulmões comprometidos, dependendo inteiramente de oxigênio e medicação contínua.</div>
       </div>
       <div class="faq-linha">
-        <div class="faq-pergunta">Minha contribuição é segura? <span class="faq-sinal">+</span></div>
-        <div class="faq-resposta">Sim, totalmente segura e vai direto para a chave oficial dos pais para cobrir os custos do tratamento e medicamentos da Laura.</div>
+        <button type="button" class="faq-pergunta" aria-expanded="false" aria-controls="faq-resposta-3">
+          <span>Minha contribuição é segura?</span><span class="faq-sinal" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-resposta" id="faq-resposta-3" hidden>Sim, totalmente segura e vai direto para a chave oficial dos pais para cobrir os custos do tratamento e medicamentos da Laura.</div>
       </div>
       <div class="faq-linha">
-        <div class="faq-pergunta">Não posso contribuir — como ajudo de outra forma? <span class="faq-sinal">+</span></div>
-        <div class="faq-resposta">Compartilhe o link deste site com amigos, familiares e em grupos de WhatsApp. Isso nos ajuda imensamente a alcançar mais corações solidários.</div>
+        <button type="button" class="faq-pergunta" aria-expanded="false" aria-controls="faq-resposta-4">
+          <span>Não posso contribuir — como ajudo de outra forma?</span><span class="faq-sinal" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-resposta" id="faq-resposta-4" hidden>Compartilhe o link deste site com amigos, familiares e em grupos de WhatsApp. Isso nos ajuda imensamente a alcançar mais corações solidários.</div>
       </div>
       <div class="faq-linha">
-        <div class="faq-pergunta">O dinheiro realmente chega para a família? <span class="faq-sinal">+</span></div>
-        <div class="faq-resposta">Sim. Todo o valor arrecadado é gerido pelos pais e utilizado integralmente no tratamento, remédios e insumos necessários para salvar a vida da Laura.</div>
+        <button type="button" class="faq-pergunta" aria-expanded="false" aria-controls="faq-resposta-5">
+          <span>O dinheiro realmente chega para a família?</span><span class="faq-sinal" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-resposta" id="faq-resposta-5" hidden>Sim. Todo o valor arrecadado é gerido pelos pais e utilizado integralmente no tratamento, remédios e insumos necessários para salvar a vida da Laura.</div>
       </div>
     </section>
 
@@ -747,8 +786,13 @@
   <script>
     document.querySelectorAll('.faq-pergunta').forEach(function (item) {
       item.addEventListener('click', function () {
-        this.classList.toggle('expandida');
-        this.nextElementSibling.classList.toggle('expandida');
+        const resposta = this.nextElementSibling;
+        const expandida = this.getAttribute('aria-expanded') === 'true';
+
+        this.setAttribute('aria-expanded', String(!expandida));
+        this.classList.toggle('expandida', !expandida);
+        resposta.hidden = expandida;
+        resposta.classList.toggle('expandida', !expandida);
       });
     });
 
