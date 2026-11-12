@@ -605,7 +605,7 @@
     <div class="online-visitors-badge">
       <span class="green-pulse-dot"></span>
       <span class="online-text">
-        <strong id="online-count">322</strong> pessoas online vendo esta história agora
+        <strong class="online-count">322</strong> pessoas online vendo esta história agora
       </span>
     </div>
   </div>
@@ -663,6 +663,15 @@
       </div>
      
       <div style="text-align: center; margin: 25px 0;">
+          <div class="online-visitors-wrapper" style="margin-bottom: 14px;">
+            <div class="online-visitors-badge" style="margin: 0;">
+              <span class="green-pulse-dot"></span>
+              <span class="online-text">
+                <strong class="online-count">322</strong> pessoas online agora — faça sua parte
+              </span>
+            </div>
+          </div>
+
           <img src="flow.jpg" alt="Código QR para doação via Pix" width="400" height="400" loading="lazy" style="max-width: 450px; width: 100%; height: auto; border-radius: 12px; display: block; margin: 0 auto 15px auto; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
 
           <button onclick="copiarPix()" id="btn-copiar-pix" style="background-color: #25d366; color: white; border: none; padding: 15px 30px; font-size: 19px; font-weight: bold; border-radius: 8px; cursor: pointer; transition: 0.2s; box-shadow: 0 4px 10px rgba(0,0,0,0.2); width: 100%; max-width: 320px;">
@@ -880,9 +889,9 @@
       document.getElementById('ajudar-laura').scrollIntoView({ behavior: 'smooth' });
     });
 
-    // Script do Contador de Visitantes Online Dinâmico
+    // Script do Contador de Visitantes Online Dinâmico (sincronizado nos dois selos)
     document.addEventListener("DOMContentLoaded", function () {
-      const countEl = document.getElementById("online-count");
+      const countElements = document.querySelectorAll(".online-count");
       let count = 322;
       const min = 312;
       const max = 345;
@@ -895,7 +904,9 @@
         if (next > max) next = max - Math.floor(Math.random() * 3);
 
         count = next;
-        if (countEl) countEl.textContent = count;
+        countElements.forEach(el => {
+          el.textContent = count;
+        });
 
         const delay = Math.floor(Math.random() * 4000) + 2500;
         setTimeout(updateOnline, delay);
