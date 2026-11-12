@@ -11,10 +11,10 @@
     t.src=v;s=b.getElementsByTagName(e)[0];
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '2329575777877928');
+    fbq('init', '2311508326365399');
     fbq('track', 'PageView');
   </script>
-  <noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=2329575777877928&ev=PageView&noscript=1"/></noscript>
+  <noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=2311508326365399&ev=PageView&noscript=1"/></noscript>
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -93,9 +93,61 @@
       object-fit: contain;
     }
 
+    /* Selo de Visitantes Online ao Vivo */
+    .online-visitors-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      background-color: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      color: #166534;
+      padding: 7px 15px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-family: inherit;
+      margin: 14px auto 6px auto;
+      box-shadow: 0 2px 6px rgba(22, 163, 74, 0.08);
+    }
+    .online-visitors-wrapper {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+    .online-text strong {
+      font-weight: 800;
+      color: #15803d;
+      font-variant-numeric: tabular-nums;
+    }
+    .green-pulse-dot {
+      width: 9px;
+      height: 9px;
+      background-color: #22c55e;
+      border-radius: 50%;
+      display: inline-block;
+      flex-shrink: 0;
+      position: relative;
+      box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+      animation: pulse-green 2s infinite;
+    }
+    @keyframes pulse-green {
+      0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+      }
+      70% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 8px rgba(34, 197, 94, 0);
+      }
+      100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+      }
+    }
+
     .coluna { max-width: 640px; margin: 0 auto; padding: 0 1.15rem; }
 
-    .chamada { padding: 1.55rem 0 1.05rem; text-align: center; }
+    .chamada { padding: 1.25rem 0 1.05rem; text-align: center; }
     .chamada-tag {
       display: inline-block;
       background: var(--brasa-veu);
@@ -549,6 +601,15 @@
    <img src="logo.jpg" alt="Abrace uma Vida" class="selo-figura" width="150" height="94" loading="eager">
   </header>
 
+  <div class="online-visitors-wrapper">
+    <div class="online-visitors-badge">
+      <span class="green-pulse-dot"></span>
+      <span class="online-text">
+        <strong id="online-count">322</strong> pessoas online vendo esta história agora
+      </span>
+    </div>
+  </div>
+
   <main class="coluna">
 
     <div class="chamada">
@@ -628,6 +689,11 @@
           const chavePix = "apoiealaurinha@gmail.com"; 
           const btn = document.getElementById("btn-copiar-pix");
           const inputPix = document.getElementById("texto-pix");
+
+          // Disparo do evento Donate no Pixel do Facebook
+          if (typeof fbq === 'function') {
+              fbq('track', 'Donate');
+          }
 
           if (navigator.clipboard && navigator.clipboard.writeText) {
               navigator.clipboard.writeText(chavePix).then(() => {
@@ -812,6 +878,30 @@
     document.getElementById('atalho-doar').addEventListener('click', function (ev) {
       ev.preventDefault();
       document.getElementById('ajudar-laura').scrollIntoView({ behavior: 'smooth' });
+    });
+
+    // Script do Contador de Visitantes Online Dinâmico
+    document.addEventListener("DOMContentLoaded", function () {
+      const countEl = document.getElementById("online-count");
+      let count = 322;
+      const min = 312;
+      const max = 345;
+
+      function updateOnline() {
+        const delta = Math.floor(Math.random() * 7) - 3;
+        let next = count + delta;
+
+        if (next < min) next = min + Math.floor(Math.random() * 3);
+        if (next > max) next = max - Math.floor(Math.random() * 3);
+
+        count = next;
+        if (countEl) countEl.textContent = count;
+
+        const delay = Math.floor(Math.random() * 4000) + 2500;
+        setTimeout(updateOnline, delay);
+      }
+
+      setTimeout(updateOnline, 3000);
     });
   </script>
 </body>
