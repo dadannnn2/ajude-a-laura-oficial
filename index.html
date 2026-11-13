@@ -6,7 +6,7 @@
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
     n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=true;n.loaded=!0;n.version='2.0';
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
     n.queue=[];t=b.createElement(e);t.async=!0;
     t.src=v;s=b.getElementsByTagName(e)[0];
     s.parentNode.insertBefore(t,s)}(window, document,'script',
@@ -694,18 +694,21 @@
           copiarPix();
       }
 
+      // Registra apenas a intenção de copiar a chave Pix, nunca uma doação concluída.
+      function registrarCliqueCopiaPix() {
+          if (typeof fbq === 'function') {
+              fbq('trackCustom', 'PixCopyClick', { method: 'pix' });
+          }
+      }
+
       function copiarPix() {
-          const chavePix = "apoiealaurinha@gmail.com"; 
+          const chavePix = "apoiealaurinha@gmail.com";
           const btn = document.getElementById("btn-copiar-pix");
           const inputPix = document.getElementById("texto-pix");
 
-          // Disparo do evento Donate no Pixel do Facebook
-          if (typeof fbq === 'function') {
-              fbq('track', 'Donate');
-          }
-
           if (navigator.clipboard && navigator.clipboard.writeText) {
               navigator.clipboard.writeText(chavePix).then(() => {
+                  registrarCliqueCopiaPix();
                   sucessoCopia(btn);
               }).catch(() => {
                   copiaAlternativa(inputPix, btn);
@@ -715,16 +718,32 @@
           }
       }
 
+      let copiaPeloBotaoEmAndamento = false;
+
       function copiaAlternativa(input, btn) {
           input.focus();
           input.select();
           try {
-              document.execCommand('copy');
-              sucessoCopia(btn);
+              copiaPeloBotaoEmAndamento = true;
+              const copiou = document.execCommand('copy');
+              copiaPeloBotaoEmAndamento = false;
+              if (copiou) {
+                  registrarCliqueCopiaPix();
+                  sucessoCopia(btn);
+              } else {
+                  btn.innerHTML = "⚠️ Selecione a chave acima e copie";
+              }
           } catch (err) {
+              copiaPeloBotaoEmAndamento = false;
               btn.innerHTML = "⚠️ Selecione a chave acima e copie";
           }
       }
+
+      // Também mede a cópia manual feita no campo da chave Pix (Ctrl+C / menu Copiar).
+      // Evita duplicar o evento quando a cópia foi iniciada pelo botão.
+      document.getElementById('texto-pix').addEventListener('copy', function () {
+          if (!copiaPeloBotaoEmAndamento) registrarCliqueCopiaPix();
+      });
 
       function sucessoCopia(btn) {
           btn.innerHTML = "✅ Chave Pix Copiada com Sucesso!";
