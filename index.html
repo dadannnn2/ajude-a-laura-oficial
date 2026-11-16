@@ -26,7 +26,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@700;800;900&family=Mulish:ital,wght@0,400;0,600;0,700;0,800;1,400;1,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@700;800;900&family=Mulish:ital,wght@0,400;0,600;0,700;0,800;1,400;1,700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -52,7 +52,7 @@
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Mulish', system-ui, sans-serif;
+      font-family: 'Mulish', system-ui, -apple-system, sans-serif;
       background: var(--papel);
       color: var(--tinta);
       -webkit-font-smoothing: antialiased;
@@ -93,7 +93,7 @@
       object-fit: contain;
     }
 
-    /* Selo de Visitantes Online ao Vivo */
+    /* Selo de Visitantes Online ao Vivo Otimizado */
     .online-visitors-badge {
       display: inline-flex;
       align-items: center;
@@ -107,7 +107,6 @@
       font-size: 13px;
       font-family: inherit;
       margin: 14px auto 6px auto;
-      box-shadow: 0 2px 6px rgba(22, 163, 74, 0.08);
     }
     .online-visitors-wrapper {
       display: flex;
@@ -126,23 +125,6 @@
       border-radius: 50%;
       display: inline-block;
       flex-shrink: 0;
-      position: relative;
-      box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
-      animation: pulse-green 2s infinite;
-    }
-    @keyframes pulse-green {
-      0% {
-        transform: scale(0.95);
-        box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
-      }
-      70% {
-        transform: scale(1.05);
-        box-shadow: 0 0 0 8px rgba(34, 197, 94, 0);
-      }
-      100% {
-        transform: scale(0.95);
-        box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
-      }
     }
 
     .coluna { max-width: 640px; margin: 0 auto; padding: 0 1.15rem; }
@@ -169,7 +151,6 @@
       line-height: 1.22;
       color: var(--cacau);
       margin-bottom: 0.7rem;
-      text-wrap: balance;
     }
     .chamada p {
       font-size: 1rem;
@@ -188,7 +169,6 @@
       object-position: center 18%;
       display: block;
       border-radius: 8px 8px 0 0;
-      box-shadow: 0 10px 28px rgba(74,43,34,0.24);
     }
     .capa-nota {
       background: var(--cacau);
@@ -206,7 +186,6 @@
       border-radius: 8px;
       padding: 1.3rem 1.15rem 1.1rem;
       margin-bottom: 1.35rem;
-      box-shadow: 0 4px 18px rgba(74,43,34,0.08);
     }
     .painel-topo {
       display: flex;
@@ -280,7 +259,7 @@
       font-size: 0.95rem;
       color: #176b3a;
       margin-bottom: 0.55rem;
-      font-family: 'Figtree', system-ui, sans-serif;
+      font-family: 'Figtree', sans-serif;
     }
     .caixa-seguranca p {
       font-size: 0.8rem;
@@ -386,7 +365,6 @@
       padding: 12px 5px;
       border-radius: 8px;
       cursor: pointer;
-      transition: all 0.2s ease;
       font-family: 'Figtree', sans-serif;
       width: 100%;
       text-align: center;
@@ -395,8 +373,6 @@
       background: #e3832f;
       color: #ffffff;
       border-color: #c86c1f;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(227,131,47,0.35);
     }
     .btn-valor-caixa-destaque {
       display: flex;
@@ -415,15 +391,12 @@
       text-transform: uppercase;
       letter-spacing: 0.03em;
       margin-bottom: 4px;
-      white-space: nowrap;
-      box-shadow: 0 2px 6px rgba(232,67,43,0.3);
       font-family: 'Figtree', sans-serif;
     }
     .btn-destaque {
       background: linear-gradient(135deg, #e8432b, #c7331d) !important;
       color: #ffffff !important;
       border: 2px solid #a62d1a !important;
-      box-shadow: 0 4px 14px rgba(232,67,43,0.4);
     }
 
     .depoimentos { margin-bottom: 1.8rem; }
@@ -444,7 +417,6 @@
       flex-shrink: 0;
       object-fit: cover;
       border: 2px solid var(--terra);
-      filter: contrast(1.1) saturate(0.86) brightness(1.05);
     }
     .depoimento-nome { font-size: 0.86rem; font-weight: 800; color: var(--tinta); line-height: 1.2; }
     .depoimento-tempo { font-size: 0.72rem; color: var(--tinta-media); font-weight: 600; }
@@ -494,9 +466,8 @@
       background: transparent;
       border: 0;
       text-align: left;
-      user-select: none;
     }
-    .faq-sinal { color: var(--brasa); font-size: 1.2rem; transition: transform 0.25s; flex-shrink: 0; }
+    .faq-sinal { color: var(--brasa); font-size: 1.2rem; transition: transform 0.2s; flex-shrink: 0; }
     .faq-pergunta.expandida .faq-sinal { transform: rotate(45deg); }
     .faq-resposta {
       max-height: 0;
@@ -504,7 +475,7 @@
       font-size: 0.86rem;
       color: var(--tinta-media);
       line-height: 1.75;
-      transition: max-height 0.3s ease, padding 0.3s;
+      transition: max-height 0.2s ease;
     }
     .faq-resposta.expandida { max-height: 380px; padding-bottom: 1rem; }
 
@@ -539,11 +510,8 @@
       border: none;
       cursor: pointer;
       z-index: 99;
-      box-shadow: 0 8px 24px rgba(199,51,29,0.48);
       font-family: 'Figtree', sans-serif;
-      transition: filter 0.2s;
     }
-    .cta-fixo:hover { filter: brightness(1.05); }
 
     .whatsapp-fixo {
       position: fixed;
@@ -566,11 +534,8 @@
       padding: 0.85rem 1.35rem;
       border-radius: 6px;
       z-index: 98;
-      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
       font-family: 'Figtree', sans-serif;
-      transition: filter 0.2s;
     }
-    .whatsapp-fixo:hover { filter: brightness(1.05); }
 
     @media (max-width: 600px) {
       .selo-figura { height: 78px; }
@@ -672,9 +637,9 @@
             </div>
           </div>
 
-          <img src="flow.jpg" alt="Código QR para doação via Pix" width="400" height="400" loading="lazy" style="max-width: 450px; width: 100%; height: auto; border-radius: 12px; display: block; margin: 0 auto 15px auto; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+          <img src="flow.jpg" alt="Código QR para doação via Pix" width="400" height="400" loading="lazy" style="max-width: 450px; width: 100%; height: auto; border-radius: 12px; display: block; margin: 0 auto 15px auto;">
 
-          <button onclick="copiarPix()" id="btn-copiar-pix" style="background-color: #25d366; color: white; border: none; padding: 15px 30px; font-size: 19px; font-weight: bold; border-radius: 8px; cursor: pointer; transition: 0.2s; box-shadow: 0 4px 10px rgba(0,0,0,0.2); width: 100%; max-width: 320px;">
+          <button onclick="copiarPix()" id="btn-copiar-pix" style="background-color: #25d366; color: white; border: none; padding: 15px 30px; font-size: 19px; font-weight: bold; border-radius: 8px; cursor: pointer; width: 100%; max-width: 320px;">
               📋 Copiar Chave Pix (E-mail)
           </button>
 
@@ -694,7 +659,6 @@
           copiarPix();
       }
 
-      // Registra apenas a intenção de copiar a chave Pix, nunca uma doação concluída.
       function registrarCliqueCopiaPix() {
           if (typeof fbq === 'function') {
               fbq('trackCustom', 'PixCopyClick', { method: 'pix' });
@@ -739,8 +703,6 @@
           }
       }
 
-      // Também mede a cópia manual feita no campo da chave Pix (Ctrl+C / menu Copiar).
-      // Evita duplicar o evento quando a cópia foi iniciada pelo botão.
       document.getElementById('texto-pix').addEventListener('copy', function () {
           if (!copiaPeloBotaoEmAndamento) registrarCliqueCopiaPix();
       });
@@ -801,7 +763,7 @@
 
       <div class="depoimento">
         <div class="depoimento-topo">
-          <img src="comentario-taina.jpg" alt="Foto de Tainá Vilela" class="depoimento-foto" width="46" height="46" loading="lazy" style="object-position: 48% 22%;">
+          <img src="comentario-taina.jpg" alt="Foto de Tainá Vilela" class="depoimento-foto" width="46" height="46" loading="lazy">
           <div>
             <div class="depoimento-nome">Tainá Vilela</div>
             <div class="depoimento-tempo">há 22 minutos</div>
@@ -813,7 +775,7 @@
 
       <div class="depoimento">
         <div class="depoimento-topo">
-          <img src="comentario-henrique.jpg" alt="Foto de Henrique Farias" class="depoimento-foto" width="46" height="46" loading="lazy" style="object-position: 50% 18%;">
+          <img src="comentario-henrique.jpg" alt="Foto de Henrique Farias" class="depoimento-foto" width="46" height="46" loading="lazy">
           <div>
             <div class="depoimento-nome">Henrique Farias</div>
             <div class="depoimento-tempo">há 1 hora</div>
@@ -825,7 +787,7 @@
 
       <div class="depoimento">
         <div class="depoimento-topo">
-          <img src="comentario-luciana.jpg" alt="Foto de Luciana Siqueira" class="depoimento-foto" width="46" height="46" loading="lazy" style="object-position: 50% 10%;">
+          <img src="comentario-luciana.jpg" alt="Foto de Luciana Siqueira" class="depoimento-foto" width="46" height="46" loading="lazy">
           <div>
             <div class="depoimento-nome">Luciana Siqueira</div>
             <div class="depoimento-tempo">há 3 horas</div>
@@ -908,7 +870,7 @@
       document.getElementById('ajudar-laura').scrollIntoView({ behavior: 'smooth' });
     });
 
-    // Script do Contador de Visitantes Online Dinâmico (sincronizado nos dois selos)
+    // Contador de visitantes otimizado para não travar a CPU mobile
     document.addEventListener("DOMContentLoaded", function () {
       const countElements = document.querySelectorAll(".online-count");
       let count = 322;
@@ -918,20 +880,13 @@
       function updateOnline() {
         const delta = Math.floor(Math.random() * 7) - 3;
         let next = count + delta;
-
-        if (next < min) next = min + Math.floor(Math.random() * 3);
-        if (next > max) next = max - Math.floor(Math.random() * 3);
-
+        if (next < min) next = min + 2;
+        if (next > max) next = max - 2;
         count = next;
-        countElements.forEach(el => {
-          el.textContent = count;
-        });
-
-        const delay = Math.floor(Math.random() * 4000) + 2500;
-        setTimeout(updateOnline, delay);
+        countElements.forEach(el => { el.textContent = count; });
+        setTimeout(updateOnline, 6000); // Intervalo mais espaçado para poupar bateria e processamento
       }
-
-      setTimeout(updateOnline, 3000);
+      setTimeout(updateOnline, 4000);
     });
   </script>
 </body>
